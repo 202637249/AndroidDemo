@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" content="content">
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <title>拖拽旋转</title>
+</head>
+
+
+<body>
+<p>input 文件加载</p>
+<input type="file"  value="加载文件">
+
+<script>
+    $(function(){
+       $("#file").change(function(e){
+             var file = e.target.files||e.dataTransfer.files;
+             if(file){
+                 var reader = new FileReader();
+                 reader.onload=function(){
+                        $("<img src='"+this.result+"'/>").appendTo("body");
+
+                 }
+
+                reader.readAsDataURL(file);
+            }
+      });
+   })
+ </script>
+</body>
+</html>
